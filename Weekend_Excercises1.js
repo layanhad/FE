@@ -108,6 +108,66 @@ console.log(findUniq([1,1,1,2,1,2]));
 console.log(findUniq([ 1, 1, 1, 2, 1, 1 ]));
 console.log(findUniq([ 0, 0, 0.55, 0, 0 ]));
 
+// Exe 2.5 - Summation
+function summtion(number){
+    if(typeof number !== "number" || number < 1){
+        return "Input must be a positive number";
+    }
+    sum = 0;
+    for (let i=1 ;i<= number; i++){
+        sum += i;
+    }
+    return sum;
+}
+
+console.log("------- Exe 2.5 -------");
+console.log(summtion(-1));
+console.log(summtion(2));
+console.log(summtion(8));
+
+// Exe 2.6 - Years and Centuries
+function centuryFromYear(year){
+    if (typeof year !== 'number' || year < 1 || !Number.isInteger(year)) {
+        return ("Input must be a positive Integer");
+    }
+    return Math.ceil(year / 100);
+}
+
+console.log("------- Exe 2.6 -------");
+console.log(centuryFromYear(1705));
+console.log(centuryFromYear(1900));
+console.log(centuryFromYear(1601));
+console.log(centuryFromYear(2000));
+
+// Exe 2.7 - Basic Math
+function basicOp (operation, value1, value2) {
+    if (typeof value1 !== 'number' || typeof value2 !== 'number') {
+      return ("Both values must be numbers");
+    }
+    if(typeof operation !== 'string'){
+        return ("Operation must be a string");
+    }
+    switch(operation) {
+      case '+': return value1 + value2;
+      case '-': return value1 - value2;
+      case '*': return value1 * value2;
+      case '/': 
+        if (value2 === 0) return('Division by zero');
+        else return value1 / value2;
+      default: return('Invalid operation');
+    }
+  }
+
+console.log("------- Exe 2.7 -------");
+console.log(basicOp('+', '-', 7));
+console.log(basicOp('++', 4, 7));
+console.log(basicOp('+', 4, 7));
+console.log(basicOp('-', 15, 18));
+console.log(basicOp('*', 5, 5));
+console.log(basicOp('/', 49, 7));
+
+
+
 /*------------------------------------- Math In Story -------------------------------------*/
 
 
