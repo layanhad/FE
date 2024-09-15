@@ -164,14 +164,64 @@ console.log(basicOp('++', 4, 7));
 console.log(basicOp('+', 4, 7));
 console.log(basicOp('-', 15, 18));
 console.log(basicOp('*', 5, 5));
+console.log(basicOp('/', 49, 0));
 console.log(basicOp('/', 49, 7));
 
-
-
 /*------------------------------------- Math In Story -------------------------------------*/
+// Exe 3.1 - Growth Of population
+function nb_year (p0, percent, aug, p) {
+    if (typeof p0 !== 'number' || typeof percent !== 'number' || typeof aug !== 'number' || typeof p !== 'number' ||
+        p0 < 0 || percent < 0 || p < p0) {
+      return("Input must be positive integers");
+    }
+    let years = 0;
+    let currentPopulation = p0;
+    while (currentPopulation < p) {
+      currentPopulation = Math.floor(currentPopulation + currentPopulation * percent / 100 + aug);
+      years++;
+      if (years > 1000) return("Population growth exceeded 1000 years");
+    }
+    return years;
+  };
+
+console.log("------- Exe 3.1 -------");
+console.log(nb_year(1500, "5", 100, 5000));
+console.log(nb_year(1500, 5, -1, 5000));
+console.log(nb_year(1500, 5, 100, 5000));
+console.log(nb_year(1500000, 2.5, 10000, 2000000));
+
+// Exe 3.2 - People on the Bus
+function peopleOnBus(busStops){
+    if (!Array.isArray(busStops) || busStops.some(stop => !Array.isArray(stop) || stop.length !== 2)) {
+        return("Input must be an array of arrays, each containing 2 numbers");
+    }
+    let peopleOnBus = 0;
+
+    for (let i = 0; i < busStops.length; i++) {
+        const peopleIn = busStops[i][0]; 
+        const peopleOut = busStops[i][1]; 
+
+        if (peopleIn - peopleOut < 0) {
+            return(`Invalid data at stop ${i}: [${peopleIn}, ${peopleOut}] the number of people out should be less than the people on the bus`);
+        }
+
+        peopleOnBus += peopleIn - peopleOut;
+    }
+
+    return peopleOnBus;
+      
+}
+
+console.log("------- Exe 3.2 -------");
+console.log(peopleOnBus(1));
+console.log(peopleOnBus([1,2,3]));
+console.log(peopleOnBus([[1,2],[3]]));
+console.log(peopleOnBus([[1,2],[1,3]]));
+console.log(peopleOnBus([[2,2],[5,3],[7,4]]));
 
 
 /*------------------------------------- Advanced Math -------------------------------------*/
+
 
 
 /*------------------------------------- Basic Iteration Logic -------------------------------------*/
