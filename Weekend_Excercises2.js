@@ -100,8 +100,54 @@ console.log(islsogram("aba"));
 console.log(islsogram("moOse"));
 
 /*------------------------------------- Implement Functionality -------------------------------------*/
+// Exe 7 
+
+function Filter(arr, callback){
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr)) {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+
+console.log("------- Exe 7  Filter -------");
+console.log(Filter([1,2,3,4,5,6],num => num % 2 === 1));
+
+function Mapp(arr, callback) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(callback(arr[i], i, arr));
+    }
+    return result;
+}
+
+console.log("------- Exe 7  Map -------");
+console.log(Mapp([1,2,3,4,5,6],num => num * 2))
+
+function ForEach(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        callback(arr[i], i, arr);
+    }
+}
+
+console.log("------- Exe 7  ForEach -------");
+ForEach([1,2,3,4,5,6],num => console.log(num));
 
 
+// Exe 8 - Find the Perimeter of a Rectangle
+function findPerimeter(length , width){
+    if(typeof length !== 'number' || typeof width !== 'number' || length < 1 || width < 1){
+        return ("Inputs must be positive numbers");
+    }
+    return 2 * (length + width);
+}
 
-
+console.log("------- Exe 8 -------");
+console.log(findPerimeter(-5,6));
+console.log(findPerimeter(6, 7)); 
+console.log(findPerimeter(20, 10)); 
+console.log(findPerimeter(2, 9)); 
 
