@@ -325,16 +325,104 @@ console.log(toCamelCase("the-stealth-warrior"));
 console.log(toCamelCase("The_Stealth_Warrior"));
 
 // Exe 5.4 - To Weird Case
-
+function toWeirdCase(str){
+    if (typeof str !== 'string') {
+        return("Input must be a string");
+    }
+    if (!/^[a-zA-Z ]+$/.test(str)) {
+        return("Input must only contain alphabetical characters and spaces");
+    }
+    const words = str.split(' ');
+    return words.map(word => word.split('').map((char, i) => i % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('')).join(' ');
+    
+}
 
 console.log("------- Exe 5.4 -------");
-
+console.log(toWeirdCase(5));
+console.log(toWeirdCase("String"));
+console.log(toWeirdCase( "Weird string case" ));
 
 // Exe 5.5 - Abbreviate two words
-
+function abbrevName (name) {
+    if (typeof name !== 'string') {
+      return("Input must be a string");
+    }
+    if (!/^[a-zA-Z ]+$/.test(name)) {
+        return("Input must only contain alphabetical characters and spaces");
+    }
+    const words = name.split(' ');
+    if (words.length !== 2) {
+      return("Input must contain exactly two words");
+    }
+    return words.map(word => word[0].toUpperCase()).join('.');
+  };
+  
 console.log("------- Exe 5.5 -------");
+console.log(abbrevName(7));
+console.log(abbrevName("Layan5"));
+console.log(abbrevName("Layan"));
+console.log(abbrevName("Sam Harris"));
+console.log(abbrevName("Patrick Feeney"));
 
-/*------------------------------------- Advanced Iteration Logic -------------------------------------*/
+// Exe 5.6 - Mask
+function maskify(str){
+    if (typeof str !== 'string') {
+        return("Input must be a string");
+    }
+    if (str.length <= 4) return str;
+    return str.slice(0, -4).replace(/./g, '#') + str.slice(-4);
+
+}
+
+console.log("------- Exe 5.6 -------");
+console.log(maskify(8));
+console.log("123");
+console.log(maskify(""));
+console.log(maskify("1"));
+console.log(maskify("64607935616"));
+console.log(maskify("4556364607935616"));
+console.log(maskify("Skippy"));
+console.log(maskify("Nananananananananananananananana Batman!"));
+
+// Exe 5.7 - shortest words
+function shortestWords(str){
+    if (typeof str !== 'string') {
+        return("Input must be a string");
+    }
+    const words = str.split(' ');
+    let min = words[0].length;
+    for(let word of words){
+        if(word.length < min){
+            min = word.length;
+        }
+    }
+    return min;
+}
+
+console.log("------- Exe 5.7 -------");
+console.log(shortestWords(9));
+console.log(shortestWords("Patrick Feeney"));
+console.log(shortestWords("My name is Sam"));
 
 
-/*------------------------------------- Implement Functionality -------------------------------------*/
+
+// Exe 5.8 - shortest words version 2
+function longestWords(str){
+    if (typeof str !== 'string' || str.trim().length === 0) {
+      return("Input must be a non-empty string");
+    }
+    const words = str.split(' ');
+    let max = words[0].length;
+    for(let word of words){
+        if(word.length > max){
+            max = word.length;
+        }
+    }    
+    return words.filter(word => word.length === max);
+}
+
+console.log("------- Exe 5.8 -------");
+console.log(longestWords(9));
+console.log(longestWords("  "));
+console.log(longestWords("Hi how you doing"));
+console.log(longestWords("Sam and Ron hi"));
