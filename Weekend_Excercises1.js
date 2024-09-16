@@ -172,7 +172,7 @@ console.log(basicOp('/', 49, 7));
 function nb_year (p0, percent, aug, p) {
     if (typeof p0 !== 'number' || typeof percent !== 'number' || typeof aug !== 'number' || typeof p !== 'number' ||
         p0 < 0 || percent < 0 || p < p0) {
-      return("Input must be positive integers");
+      return("Input must be non-negative integers");
     }
     let years = 0;
     let currentPopulation = p0;
@@ -221,11 +221,118 @@ console.log(peopleOnBus([[2,2],[5,3],[7,4]]));
 
 
 /*------------------------------------- Advanced Math -------------------------------------*/
+// Exe 4.1 - Fibonacci
+function fibonacci (number){
+    if (typeof number !== 'number' || number < 0 || !Number.isInteger(number)) {
+      return("Input must be a non-negative integer");
+    }
+    if (number === 0) return 0;
+    if (number === 1) return 1;
+    let prev = 0;
+    let curr = 1;
+    for (let i = 2; i <= number; i++) {
+        const next = prev + curr;
+        prev = curr;
+        curr = next;
+    }
+    return curr;
+}
+  
+console.log("------- Exe 4.1 -------");
+console.log(fibonacci("yes"));
+console.log(fibonacci(-5));
+console.log(fibonacci(2));
+console.log(fibonacci(6));
 
 
+// Exe 4.2 - Tribonacci
+function tribonacci (signature, n) {
+    if (!Array.isArray(signature) || signature.length !== 3 || 
+        signature.some(num => typeof num !== 'number' || num < 0)) {
+      return('Signature must be an array of 3 non-negative numbers');
+    }
+    if (typeof n !== 'number' || n < 0 || !Number.isInteger(n)) {
+      return('n must be a positive integer');
+    }
+    if (n === 0) return [];
+    if (n <= 3) return signature.slice(0, n);
+    const result = signature.slice();
+    for (let i = 3; i < n; i++) {
+        const nextElement = result[i - 1] + result[i - 2] + result[i - 3];
+        result.push(nextElement);
+    }
+
+    return result;
+}
+
+console.log("------- Exe 4.2 -------");
+console.log(tribonacci([1, 2, 3], 0));
+console.log(tribonacci([0, 1, 1,4], 5));
+console.log(tribonacci([1, -2, 3], 2));
+console.log(tribonacci( [1, 1, 1], 5));
+console.log(tribonacci( [1, 1, 1], 8));
 
 /*------------------------------------- Basic Iteration Logic -------------------------------------*/
+// Exe 5.1 - trimming string
+function trimingString (str){
+    if (typeof str !== 'string' || str.length < 3) {
+      return ("Input must be a string with at least 3 characters");
+    }
+    return str.slice(1, -1);
+  }
 
+console.log("------- Exe 5.1 -------");
+console.log(trimingString(7));
+console.log(trimingString("ye"));
+console.log(trimingString("yes"));
+console.log(trimingString("hello word"));
+
+
+// Exe 5.2 - String Repeat
+function repeatStr(n, str){
+    if (typeof n !== 'number' || n < 0 || !Number.isInteger(n)) {
+        return ("n must be a non-negative integer");
+    }
+    if (typeof str !== 'string') {
+        return("str must be a string");
+    }
+    return str.repeat(n);
+}
+
+console.log("------- Exe 5.2 -------");
+console.log(repeatStr(-8, "I"));
+console.log(repeatStr(6, 6));
+console.log(repeatStr(6, "I"));
+console.log(repeatStr(5, "Hello"));
+
+// Exe 5.3 - To Camel Case
+function toCamelCase(str){
+    if (typeof str !== 'string') {
+        return("Input must be a string");
+    }
+      
+    if (!/^[a-zA-Z]+([_-][a-zA-Z]+)*$/.test(str)) {
+        return("Input must be words separated by dashes or underscores");
+    }
+      
+    return str.replace(/[-_](.)/g, (_, character) => character.toUpperCase());
+}
+
+console.log("------- Exe 5.3 -------");
+console.log(toCamelCase("The--Stealth_Warrior"));
+console.log(toCamelCase("The/Stealth_Warrior"));
+console.log(toCamelCase("the-stealth-warrior"));
+console.log(toCamelCase("The_Stealth_Warrior"));
+
+// Exe 5.4 - To Weird Case
+
+
+console.log("------- Exe 5.4 -------");
+
+
+// Exe 5.5 - Abbreviate two words
+
+console.log("------- Exe 5.5 -------");
 
 /*------------------------------------- Advanced Iteration Logic -------------------------------------*/
 
